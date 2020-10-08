@@ -4,14 +4,76 @@
 from collections import deque
 
 
-def get_fibonacci_number(TODO):
-	pass
+def get_fibonacci_number(index):
+	# if index == 0:
+	# 	return 0
+	# elif index == 1:
+	# 	return 1
+	# else:
+	# 	return get_fibonacci_number(index-1) + get_fibonacci_number(index-2)
+	# pass
+	# if i == 0:
+	# 	return a
+	# if i == 1:
+	# 	return b
+	# else:
+	# 	return c
+	# return a if i == 0 else b id i == 1 else c
+	return (
+		0 if index == 0 else
+		1 if index == 1 else
+		get_fibonacci_number(index-1) + get_fibonacci_number(index-2)
+	)
+def get_fibonacci_sequence(length, seq=[0, 1]):
+	# # BAtir avec les deux premiers elements pas definis recursivement
+	# # Batie recursivement le reste:
+	# if length == 1:
+	# 	return seq[0:1]
+	# elif length == 2:
+	# 	return seq[0:2]
+	# elif len(seq) < length:
+	# 	return get_fibonacci_sequence(length, seq + [seq[-1] + seq[-2]])
+	# else:
+	# 	return seq
+	#
+	return (
+		seq[0:length] if length <=2 else
+		get_fibonacci_sequence(length, seq + [seq[-1] + seq[-2]]) if len(seq) < length else
+		seq
+	)
 
-def get_fibonacci_sequence(TODO):
-	pass
+def get_sorted_dict_by_decimals(dict_arg):
+	# def decimal_part(t):
+	# 	return t[1] % 1.0
+	# return dict(sorted(dict_arg.items(), key=decimal_part))
+	return dict(sorted(dict_arg.items(), key=lambda t: t[1] % 1.0))
 
-def get_sorted_dict_by_decimals(TODO):
-	pass
+def fibonacci_numbers(length):
+	# INIT_VALUES = [0, 1]
+	# yield INIT_VALUES[0]
+	# if length >= 2:
+	# 	yield INIT_VALUES[1]
+	#
+	# if length > 2:
+	# 	last_elems = deque(INIT_VALUES)
+	# 	for i in range(2, length):
+	# 		fibo_number = last_elems[-1] + last_elems[-2]
+	# 		last_elems.append(fibo_number)
+	# 		last_elems.popleft()
+	# 		yield fibo_number
+	INIT_VALUES = [0, 1]
+	for i, elem in enumerate(INIT_VALUES):
+		if i >= length:
+			break
+		yield elem
+	last_elems = deque(INIT_VALUES)
+	for i in range(len(INIT_VALUES), length):
+		fibo_number = last_elems[-1] + last_elems[-2]
+		last_elems.append(fibo_number)
+		last_elems.popleft()
+		yield fibo_number
+
+
 
 def build_recursive_sequence_generator(TODO):
 	pass
